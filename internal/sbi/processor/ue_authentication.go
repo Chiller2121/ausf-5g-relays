@@ -436,6 +436,8 @@ func (p *Processor) UeAuthPostRequestProcedure(c *gin.Context, updateAuthenticat
 		linksValue := models.LinksValueSchema{Href: putLink}
 		responseBody.Links = make(map[string]models.LinksValueSchema)
 		responseBody.Links["eap-session"] = linksValue
+	} else {
+		logger.UeAuthLog.Infoln("No authentication method configured")
 	}
 
 	responseBody.AuthType = authInfoResult.AuthType
